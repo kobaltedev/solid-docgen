@@ -1,7 +1,5 @@
 const MyComp = () => {
-  return <></>;
+	return <></>;
 };
 
-export { 
-  MyComp 
-};
+export { MyComp };

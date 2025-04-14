@@ -1,3 +1,3 @@
 export function MyComp() {
-    return <></>;
+	return <></>;
 }

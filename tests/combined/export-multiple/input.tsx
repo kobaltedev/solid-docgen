@@ -1,33 +1,33 @@
 export function MyComp1() {
-  return <></>;
+	return <></>;
 }
 
 export function MyComp2() {
-  return <></>;
+	return <></>;
 }
 
 export const MyComp3 = () => {
-  return <></>;
-}
+	return <></>;
+};
 
 function MyComp4() {
-  return <></>;
+	return <></>;
 }
 
 export { MyComp4 };
 
 const MyComp5 = () => {
-  return <></>;
-}
+	return <></>;
+};
 
 export { MyComp5 };
 
-let MyComp6 = () => {
-  return <></>;
-}
+const MyComp6 = () => {
+	return <></>;
+};
 
-function MyComp7() {  
-  return <></>;
+function MyComp7() {
+	return <></>;
 }
 
 export { MyComp6, MyComp7 };

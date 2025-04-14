@@ -1,3 +1,3 @@
-export let MyComp = () => {
-  return <></>;
+export const MyComp = () => {
+	return <></>;
 };

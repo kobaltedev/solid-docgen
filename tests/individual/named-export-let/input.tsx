@@ -1,7 +1,5 @@
-let MyComp = () => {
-  return <></>;
+const MyComp = () => {
+	return <></>;
 };
 
-export { 
-  MyComp 
-};
+export { MyComp };

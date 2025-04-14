@@ -11,9 +11,8 @@ describe("fixtures", () => {
 	runFixtures(FIXTURE_ROOT);
 });
 
-
 function runFixtures(fixturePath: string) {
-	const fileNames = fs.readdirSync(fixturePath, { withFileTypes: true});
+	const fileNames = fs.readdirSync(fixturePath, { withFileTypes: true });
 
 	for (const entry of fileNames) {
 		const filePath = join(entry.parentPath, entry.name);
@@ -36,7 +35,9 @@ function runFixtures(fixturePath: string) {
 		test(entry.parentPath.split(path.sep).pop()!, async () => {
 			const result = parse(fileContent);
 
-			await expect(JSON.stringify(result, null, "\t")).toMatchFileSnapshot(join(entry.parentPath, "output.json"));
+			await expect(JSON.stringify(result, null, "\t")).toMatchFileSnapshot(
+				join(entry.parentPath, "output.json"),
+			);
 		});
 	}
 }

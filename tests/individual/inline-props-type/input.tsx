@@ -1,3 +1,3 @@
-export function MyComp(props: {myProp: string}) {
-  return <></>;
+export function MyComp(props: { myProp: string }) {
+	return <></>;
 }

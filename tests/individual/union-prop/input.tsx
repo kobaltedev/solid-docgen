@@ -1,7 +1,7 @@
 interface Props {
-  myProp: "A" | "B";
+	myProp: "A" | "B";
 }
 
 export function MyComp(props: Props) {
-  return <></>;
+	return <></>;
 }
