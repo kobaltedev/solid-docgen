@@ -1,0 +1,40 @@
+{
+  "name": "solid-docgen",
+  "version": "0.0.0-dev",
+  "description": "A library to extract information from Solid components for documentation generation.",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "check": "biome check",
+    "format": "biome check --write",
+    "typecheck": "tsc --noEmit",
+    "release": "pnpm tsx scripts/release.ts",
+    "test": "vitest"
+  },
+  "keywords": [
+    "solid",
+    "solidjs",
+    "documentation",
+    "documentation-generation"
+  ],
+  "author": "jer3m01 <jer3m01@jer3m01.com>",
+  "license": "MIT",
+  "files": [
+    "/dist"
+  ],
+  "exports": {
+    "import": "./src/solid-mdx.ts",
+    "types": "./src/solid-mdx.ts"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@octokit/core": "^6.1.5",
+    "solid-js": "^1.9.5",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.1"
+  },
+  "dependencies": {
+    "ts-morph": "^25.0.1"
+  }
+}
