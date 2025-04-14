@@ -1,0 +1,13 @@
+[
+	{
+		"displayName": "MyComp",
+		"props": {
+			"myProp": {
+				"type": {
+					"name": "string"
+				},
+				"required": false
+			}
+		}
+	}
+]

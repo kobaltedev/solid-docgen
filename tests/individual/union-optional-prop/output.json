@@ -1,0 +1,18 @@
+[
+	{
+		"displayName": "MyComp",
+		"props": {
+			"myProp": {
+				"type": {
+					"name": "union",
+					"values": [
+						"\"A\"",
+						"\"B\"",
+						null
+					]
+				},
+				"required": false
+			}
+		}
+	}
+]
