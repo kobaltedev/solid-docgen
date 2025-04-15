@@ -1,3 +1,5 @@
+import { Type } from "ts-morph";
+
 export interface Documentation {
 	composes?: string[];
 	description?: string;
@@ -30,81 +32,53 @@ export interface MethodDescriptor {
 }
 
 export interface BaseType {
-	required?: boolean;
-	nullable?: boolean;
-	alias?: string;
-}
-
-export interface SimpleType extends BaseType {
-	name: string;
-	raw?: string;
 }
 
 export interface UnionType extends BaseType {
 	name: "union";
-	values: string[];
+	values: TypeDescriptor[];
+	raw?: string;
 }
 
 export interface LiteralType extends BaseType {
 	name: "literal";
-	value: string;
+	value: string | boolean | number;
 }
 
-// export interface ElementsType<T = FunctionSignatureType> extends BaseType {
-//   name: string;
-//   raw: string;
-//   elements: Array<TypeDescriptor<T>>;
-// }
+export interface UndefinedType extends BaseType {
+	name: "undefined";
+}
 
-// export interface FunctionArgumentType<T> {
-//   name: string;
-//   type?: TypeDescriptor<T>;
-//   rest?: boolean;
-// }
+export interface NullType extends BaseType {
+	name: "null";
+}
 
-// export interface FunctionSignatureType extends BaseType {
-//   name: 'signature';
-//   type: 'function';
-//   raw: string;
-//   signature: {
-//     arguments: Array<FunctionArgumentType<FunctionSignatureType>>;
-//     return?: TypeDescriptor<FunctionSignatureType>;
-//   };
-// }
+export interface UnknownType extends BaseType {
+	name: "unknown";
+	raw?: string;
+}
 
-// export interface TSFunctionSignatureType extends FunctionSignatureType {
-//   signature: {
-//     arguments: Array<FunctionArgumentType<TSFunctionSignatureType>>;
-//     return?: TypeDescriptor<TSFunctionSignatureType>;
-//     this?: TypeDescriptor<TSFunctionSignatureType>;
-//   };
-// }
+export interface BooleanType extends BaseType {
+	name: "boolean";
+}
 
-// export interface ObjectSignatureType<T = FunctionSignatureType>
-//   extends BaseType {
-//   name: 'signature';
-//   type: 'object';
-//   raw: string;
-//   signature: {
-//     properties: Array<{
-//       key: TypeDescriptor<T> | string;
-//       value: TypeDescriptor<T>;
-//       description?: string;
-//     }>;
-//     constructor?: TypeDescriptor<T>;
-//   };
-// }
+export interface ObjectType extends BaseType {
+	name: "object";
+	properties: Record<string, TypeDescriptor & { required?: boolean }>;
+}
 
 export type TypeDescriptor =
-	// | ElementsType<TSFunctionSignatureType>
 	| LiteralType
-	// | ObjectSignatureType<TSFunctionSignatureType>
-	| SimpleType;
-// | T;
+  | UnionType
+	| UnknownType
+  | NullType
+  | UndefinedType
+  | BooleanType
+	| ObjectType;
 
 export interface PropDescriptor {
 	type: TypeDescriptor;
 	required?: boolean;
-	defaultValue?: unknown;
+	defaultValue?: this["type"] extends LiteralType ? this["type"]["value"] : this["type"] extends BooleanType ? boolean : this["type"] extends UnionType ? this["type"]["values"][] : unknown;
 	description?: string;
 }

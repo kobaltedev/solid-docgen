@@ -6,10 +6,16 @@
 				"type": {
 					"name": "union",
 					"values": [
-						"\"A\"",
-						"\"B\"",
-						null
-					]
+						{
+							"name": "literal",
+							"value": "A"
+						},
+						{
+							"name": "literal",
+							"value": "B"
+						}
+					],
+					"raw": "\"A\" | \"B\""
 				},
 				"required": true
 			}

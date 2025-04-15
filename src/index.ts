@@ -26,6 +26,7 @@ function getProject() {
 			esModuleInterop: true,
 			isolatedModules: true,
 			jsxImportSource: "solid-js",
+			strict: true,
 			skipLibCheck: true,
 			lib: ["dom", "esnext"],
 			types: ["solid-js"],

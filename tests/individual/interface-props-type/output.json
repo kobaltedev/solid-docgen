@@ -4,7 +4,8 @@
 		"props": {
 			"myProp": {
 				"type": {
-					"name": "string"
+					"name": "unknown",
+					"raw": "string"
 				},
 				"required": true
 			}

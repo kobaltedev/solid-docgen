@@ -6,10 +6,19 @@
 				"type": {
 					"name": "union",
 					"values": [
-						"\"A\"",
-						"\"B\"",
-						"undefined"
-					]
+						{
+							"name": "undefined"
+						},
+						{
+							"name": "literal",
+							"value": "A"
+						},
+						{
+							"name": "literal",
+							"value": "B"
+						}
+					],
+					"raw": "\"A\" | \"B\" | undefined"
 				},
 				"required": true
 			}

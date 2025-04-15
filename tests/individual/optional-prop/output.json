@@ -4,7 +4,17 @@
 		"props": {
 			"myProp": {
 				"type": {
-					"name": "string"
+					"name": "union",
+					"values": [
+						{
+							"name": "undefined"
+						},
+						{
+							"name": "unknown",
+							"raw": "string"
+						}
+					],
+					"raw": "string | undefined"
 				},
 				"required": false
 			}

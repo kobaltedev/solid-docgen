@@ -4,18 +4,19 @@
 		"props": {
 			"myProp": {
 				"type": {
-					"name": "union",
-					"values": [
-						{
+					"name": "object",
+					"properties": {
+						"a": {
 							"name": "literal",
-							"value": 1
+							"value": "A",
+							"required": true
 						},
-						{
+						"b": {
 							"name": "literal",
-							"value": 2
+							"value": "B",
+							"required": false
 						}
-					],
-					"raw": "1 | 2"
+					}
 				},
 				"required": true
 			}
