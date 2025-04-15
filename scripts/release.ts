@@ -2,7 +2,7 @@ import { execSync } from "node:child_process";
 import { Octokit } from "@octokit/core";
 
 // @ts-ignore
-process.exit(1); // Not ready for release
+process.exit(0); // Not ready for release
 
 if (!execSync("git --version").includes("git version")) {
 	console.error("Git not installed");

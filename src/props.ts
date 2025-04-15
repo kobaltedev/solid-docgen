@@ -8,7 +8,7 @@ import {
 } from "ts-morph";
 import type {
 	BooleanType,
-  LiteralType,
+	LiteralType,
 	NullType,
 	ObjectType,
 	PropDescriptor,
@@ -55,7 +55,6 @@ export function parseProps(
 }
 
 function parseType(type: Type<ts.Type>): TypeDescriptor {
-
 	if (type.isUnion()) {
 		if (type.getText() === "boolean") {
 			return {
@@ -73,56 +72,64 @@ function parseType(type: Type<ts.Type>): TypeDescriptor {
 	if (type.isBooleanLiteral()) {
 		return {
 			name: "literal",
-      value: type.getText() === "true",
+			value: type.getText() === "true",
 		} as LiteralType;
 	}
 
 	if (type.isLiteral()) {
 		return {
 			name: "literal",
-      value: type.getLiteralValue(),
+			value: type.getLiteralValue(),
 		} as LiteralType;
 	}
 
-  if (type.isUndefined()) {
-    return {
-      name: "undefined",
-    } as UndefinedType;
-  }
+	if (type.isUndefined()) {
+		return {
+			name: "undefined",
+		} as UndefinedType;
+	}
 
-  if (type.isNull()) {
-    return {
-      name: "null",
-    } as NullType;
-  }
+	if (type.isNull()) {
+		return {
+			name: "null",
+		} as NullType;
+	}
 
 	if (type.isObject() || type.isInterface() || type.isAnonymous()) {
 		return {
 			name: "object",
-			properties: Object.fromEntries(type.getProperties().map((prop) => {
-				let parsed = parseType(prop.getValueDeclarationOrThrow().getType());
+			properties: Object.fromEntries(
+				type.getProperties().map((prop) => {
+					let parsed = parseType(prop.getValueDeclarationOrThrow().getType());
 
-				if (parsed.name === "union" && prop.isOptional()) {
-					if (parsed.values.filter((v) => v.name !== "undefined").length === 1) {
-						parsed = parsed.values.filter((v) => v.name !== "undefined")[0];
-					} else if (parsed.values.filter((v) => v.name !== "undefined").length > 1) {
-						parsed.values = parsed.values.filter((v) => v.name !== "undefined");
+					if (parsed.name === "union" && prop.isOptional()) {
+						if (
+							parsed.values.filter((v) => v.name !== "undefined").length === 1
+						) {
+							parsed = parsed.values.filter((v) => v.name !== "undefined")[0];
+						} else if (
+							parsed.values.filter((v) => v.name !== "undefined").length > 1
+						) {
+							parsed.values = parsed.values.filter(
+								(v) => v.name !== "undefined",
+							);
+						}
 					}
-				}
 
-				return [
-					prop.getName(),
-					{
-						...parsed,
-						required: !prop.isOptional(),
-					},
-				]
-			})),
+					return [
+						prop.getName(),
+						{
+							...parsed,
+							required: !prop.isOptional(),
+						},
+					];
+				}),
+			),
 		} as ObjectType;
 	}
-	
+
 	return {
 		name: "unknown",
-    raw: type.getText(),
+		raw: type.getText(),
 	};
 }

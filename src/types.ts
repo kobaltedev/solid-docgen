@@ -31,8 +31,7 @@ export interface MethodDescriptor {
 	returns: MethodReturn | null;
 }
 
-export interface BaseType {
-}
+export interface BaseType {}
 
 export interface UnionType extends BaseType {
 	name: "union";
@@ -69,16 +68,22 @@ export interface ObjectType extends BaseType {
 
 export type TypeDescriptor =
 	| LiteralType
-  | UnionType
+	| UnionType
 	| UnknownType
-  | NullType
-  | UndefinedType
-  | BooleanType
+	| NullType
+	| UndefinedType
+	| BooleanType
 	| ObjectType;
 
 export interface PropDescriptor {
 	type: TypeDescriptor;
 	required?: boolean;
-	defaultValue?: this["type"] extends LiteralType ? this["type"]["value"] : this["type"] extends BooleanType ? boolean : this["type"] extends UnionType ? this["type"]["values"][] : unknown;
+	defaultValue?: this["type"] extends LiteralType
+		? this["type"]["value"]
+		: this["type"] extends BooleanType
+			? boolean
+			: this["type"] extends UnionType
+				? this["type"]["values"][]
+				: unknown;
 	description?: string;
 }
