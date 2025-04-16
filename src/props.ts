@@ -88,7 +88,17 @@ function parseType(type: Type<ts.Type>): TypeDescriptor {
 
 		return {
 			name: "union",
-			values: type.getUnionTypes().map(parseType),
+			values: type
+				.getUnionTypes()
+				.map(parseType)
+				.sort((a, b) => {
+					if (a.name === "undefined") return 1;
+					if (b.name === "undefined") return -1;
+					if (a.name === "null") return 1;
+					if (b.name === "null") return -1;
+
+					return 0;
+				}),
 			raw: type.getText(),
 		} as UnionType;
 	}

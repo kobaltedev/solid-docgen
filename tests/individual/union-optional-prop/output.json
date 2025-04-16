@@ -7,15 +7,15 @@
 					"name": "union",
 					"values": [
 						{
-							"name": "undefined"
-						},
-						{
 							"name": "literal",
 							"value": "A"
 						},
 						{
 							"name": "literal",
 							"value": "B"
+						},
+						{
+							"name": "undefined"
 						}
 					],
 					"raw": "\"A\" | \"B\" | undefined"

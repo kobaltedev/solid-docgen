@@ -8,17 +8,32 @@
 					"values": [
 						{
 							"name": "literal",
+							"value": false
+						},
+						{
+							"name": "literal",
 							"value": "A"
+						},
+						{
+							"name": "literal",
+							"value": "C"
 						},
 						{
 							"name": "literal",
 							"value": "B"
 						},
 						{
+							"name": "literal",
+							"value": 4
+						},
+						{
 							"name": "null"
+						},
+						{
+							"name": "undefined"
 						}
 					],
-					"raw": "\"A\" | \"B\" | null"
+					"raw": "false | \"A\" | \"C\" | \"B\" | 4 | null | undefined"
 				},
 				"required": true
 			}

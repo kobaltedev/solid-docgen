@@ -7,10 +7,10 @@
 					"name": "union",
 					"values": [
 						{
-							"name": "undefined"
+							"name": "string"
 						},
 						{
-							"name": "string"
+							"name": "undefined"
 						}
 					],
 					"raw": "string | undefined"
