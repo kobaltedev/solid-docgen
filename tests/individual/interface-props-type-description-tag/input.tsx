@@ -4,7 +4,7 @@ interface Props {
 	 *
 	 * @description My prop description
 	 */
-	myProp: string;
+	myProp: number;
 }
 
 export function MyComp(props: Props) {

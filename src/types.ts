@@ -61,6 +61,14 @@ export interface BooleanType extends BaseType {
 	name: "boolean";
 }
 
+export interface NumberType extends BaseType {
+	name: "number";
+}
+
+export interface StringType extends BaseType {
+	name: "string";
+}
+
 export interface ObjectType extends BaseType {
 	name: "object";
 	properties: Record<string, TypeDescriptor & { required?: boolean }>;
@@ -73,7 +81,9 @@ export type TypeDescriptor =
 	| NullType
 	| UndefinedType
 	| BooleanType
-	| ObjectType;
+	| ObjectType
+	| StringType
+	| NumberType;
 
 export interface PropDescriptor {
 	type: TypeDescriptor;

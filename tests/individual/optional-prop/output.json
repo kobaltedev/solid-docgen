@@ -10,8 +10,7 @@
 							"name": "undefined"
 						},
 						{
-							"name": "unknown",
-							"raw": "string"
+							"name": "string"
 						}
 					],
 					"raw": "string | undefined"

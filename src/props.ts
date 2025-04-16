@@ -8,8 +8,10 @@ import type {
 	BooleanType,
 	LiteralType,
 	NullType,
+	NumberType,
 	ObjectType,
 	PropDescriptor,
+	StringType,
 	TypeDescriptor,
 	UndefinedType,
 	UnionType,
@@ -115,6 +117,18 @@ function parseType(type: Type<ts.Type>): TypeDescriptor {
 		return {
 			name: "null",
 		} as NullType;
+	}
+
+	if (type.isString()) {
+		return {
+			name: "string",
+		} as StringType;
+	}
+
+	if (type.isNumber()) {
+		return {
+			name: "number",
+		} as NumberType;
 	}
 
 	if (type.isObject() || type.isInterface() || type.isAnonymous()) {
