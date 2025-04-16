@@ -8,15 +8,11 @@
 		"props": {}
 	},
 	{
-		"displayName": "MyComp4",
-		"props": {}
-	},
-	{
-		"displayName": "MyComp7",
-		"props": {}
-	},
-	{
 		"displayName": "MyComp3",
+		"props": {}
+	},
+	{
+		"displayName": "MyComp4",
 		"props": {}
 	},
 	{
@@ -25,6 +21,10 @@
 	},
 	{
 		"displayName": "MyComp6",
+		"props": {}
+	},
+	{
+		"displayName": "MyComp7",
 		"props": {}
 	}
 ]

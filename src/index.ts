@@ -5,8 +5,9 @@ import {
 	type ParameterDeclaration,
 	Project,
 	type SourceFile,
-	SyntaxKind,
-	Type,
+	type TextRange,
+	VariableDeclaration,
+	VariableStatement,
 	ts,
 } from "ts-morph";
 import { parseProps } from "./props";
@@ -15,6 +16,7 @@ import type { Documentation } from "./types";
 type Component = {
 	getName: () => string;
 	getParameters: () => ParameterDeclaration[];
+	getDescription: () => string | undefined;
 };
 
 function getProject() {
@@ -40,37 +42,59 @@ export function parse(code: string): Documentation[] {
 	const project = getProject();
 	const sourceFile = project.createSourceFile("input.tsx", code);
 
-	return getExportedComponents(sourceFile).map((f) => {
+	return getExportedComponents(sourceFile).map((c) => {
 		return {
-			displayName: f.getName(),
-			props: parseProps(project, f.getParameters()),
+			displayName: c.getName(),
+			props: parseProps(project, c.getParameters()),
+			description: c.getDescription(),
 		};
 	});
 }
 
 function getExportedComponents(sourceFile: SourceFile): Component[] {
-	const exportedFunctions = sourceFile
-		.getFunctions()
-		.filter((f) => f.isExported())
-		.map((f) => wrapWithName(f, f.getName() ?? ""));
+	const components: Component[] = [];
 
-	const exportedVariables = sourceFile
-		.getVariableDeclarations()
-		.filter((v) => v.isExported() && Node.isArrowFunction(v.getInitializer()))
-		.map((v) =>
-			wrapWithName(v.getInitializer() as ArrowFunction, v.getName()!),
-		);
+	for (const [name, value] of sourceFile.getExportedDeclarations().entries()) {
+		if (Node.isFunctionDeclaration(value[0])) {
+			components.push(
+				toComponent(
+					value[0],
+					name,
+					value[0].getJsDocs()[0]?.getDescription().trim(),
+				),
+			);
+		}
 
-	return [...exportedFunctions, ...exportedVariables];
+		if (Node.isVariableDeclaration(value[0])) {
+			const initializer = value[0].getInitializer();
+			if (Node.isArrowFunction(initializer)) {
+				components.push(
+					toComponent(
+						initializer,
+						name,
+						value[0]
+							.getVariableStatement()
+							?.getJsDocs()[0]
+							?.getDescription()
+							.trim(),
+					),
+				);
+			}
+		}
+	}
+
+	return components;
 }
 
-function wrapWithName(
+function toComponent(
 	f: ArrowFunction | FunctionDeclaration,
 	name: string,
+	description?: string,
 ): Component {
-	const wrapped = f as Component;
+	const wrapped = f as unknown as Component;
 
 	wrapped.getName = () => name;
+	wrapped.getDescription = () => description;
 
 	return wrapped;
 }

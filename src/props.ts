@@ -1,9 +1,7 @@
 import {
 	type ParameterDeclaration,
 	type Project,
-	type Symbol as TsSymbol,
 	type Type,
-	printNode,
 	ts,
 } from "ts-morph";
 import type {
@@ -12,7 +10,6 @@ import type {
 	NullType,
 	ObjectType,
 	PropDescriptor,
-	SimpleType,
 	TypeDescriptor,
 	UndefinedType,
 	UnionType,
@@ -38,6 +35,7 @@ export function parseProps(
 			const description = prop.compilerSymbol.getDocumentationComment(
 				project.getTypeChecker().compilerObject,
 			);
+			const jsDocTags = prop.getJsDocTags();
 			const required = !prop.isOptional();
 
 			props[name] = {
@@ -47,6 +45,30 @@ export function parseProps(
 
 			if (description && ts.displayPartsToString(description).trim() !== "") {
 				props[name].description = ts.displayPartsToString(description);
+			}
+
+			const descriptionTag =
+				jsDocTags.find((t) => t.getName() === "description") ??
+				jsDocTags.find((t) => t.getName() === "desc");
+			if (
+				descriptionTag &&
+				ts.displayPartsToString(descriptionTag.getText()).trim() !== ""
+			) {
+				props[name].description = ts.displayPartsToString(
+					descriptionTag.getText(),
+				);
+			}
+
+			const defaultValue =
+				jsDocTags.find((t) => t.getName() === "default") ??
+				jsDocTags.find((t) => t.getName() === "defaultvalue");
+			if (
+				defaultValue &&
+				ts.displayPartsToString(defaultValue.getText()).trim() !== ""
+			) {
+				props[name].defaultValue = parseRawValue(
+					ts.displayPartsToString(defaultValue.getText()),
+				);
 			}
 		}
 	}
@@ -131,5 +153,39 @@ function parseType(type: Type<ts.Type>): TypeDescriptor {
 	return {
 		name: "unknown",
 		raw: type.getText(),
+	};
+}
+
+function parseRawValue(value: string): TypeDescriptor;
+function parseRawValue(value: unknown, parse: false): TypeDescriptor;
+function parseRawValue(value: unknown | string, parse = true): TypeDescriptor {
+	const parsed = parse ? JSON.parse(value as string) : value;
+
+	if (
+		typeof parsed === "string" ||
+		typeof parsed === "number" ||
+		typeof parsed === "boolean"
+	) {
+		return {
+			name: "literal",
+			value: parsed,
+		} as LiteralType;
+	}
+
+	if (typeof parsed === "object" && parsed !== null) {
+		return {
+			name: "object",
+			properties: Object.fromEntries(
+				Object.entries(parsed).map(([key, value]) => [
+					key,
+					parseRawValue(value, false),
+				]),
+			),
+		} as ObjectType;
+	}
+
+	return {
+		name: "unknown",
+		raw: !parse ? JSON.stringify(value) : (value as string),
 	};
 }

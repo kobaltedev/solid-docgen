@@ -1,0 +1,15 @@
+[
+	{
+		"displayName": "MyComp",
+		"props": {
+			"myProp": {
+				"type": {
+					"name": "unknown",
+					"raw": "string"
+				},
+				"required": true,
+				"description": "My prop"
+			}
+		}
+	}
+]
