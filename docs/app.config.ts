@@ -1,9 +1,14 @@
+import workerPlugin from "@bigmistqke/vite-plugin-worker-proxy";
 import { withSolidBase } from "@kobalte/solidbase/config";
 import { defineConfig } from "@solidjs/start/config";
 
 export default defineConfig(
 	withSolidBase(
-		{},
+		{
+			vite: {
+				plugins: [workerPlugin()],
+			},
+		},
 		{
 			title: "Solid-Docgen",
 			description: "Documentation for Solid-Docgen",

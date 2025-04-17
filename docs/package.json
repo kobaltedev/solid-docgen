@@ -7,14 +7,23 @@
     "start": "vinxi start"
   },
   "dependencies": {
+    "@bigmistqke/repl": "^0.2.3",
+    "@bigmistqke/vite-plugin-worker-proxy": "^0.0.12",
+    "@bigmistqke/worker-proxy": "^0.0.12",
     "@kobalte/solidbase": "^0.2.6",
+    "@monaco-editor/loader": "^1.5.0",
     "@solidjs/router": "^0.15.3",
     "@solidjs/start": "^1.1.0",
+    "monaco-editor": "^0.52.2",
     "solid-js": "^1.9.5",
+    "typescript": "^5.8.3",
     "vinxi": "^0.5.3",
-    "vite": "6.1.2"
+    "vite": "6.3.0"
   },
   "engines": {
     "node": ">=22"
+  },
+  "devDependencies": {
+    "@iconify-json/ri": "^1.2.5"
   }
 }

@@ -10,7 +10,7 @@
     "allowJs": true,
     "strict": true,
     "noEmit": true,
-    "types": ["vinxi/types/client"],
+    "types": ["vinxi/types/client", "@bigmistqke/vite-plugin-worker-proxy/client"],
     "isolatedModules": true,
     "paths": {
       "~/*": ["./src/*"]
