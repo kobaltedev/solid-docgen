@@ -53,7 +53,7 @@ export function stringifyType(
 		obj += "}";
 
 		if (obj.replaceAll(/\$SOLID_DOCGEN_NEWLINE\$\s*/g, " ").length < maxObjLen)
-			obj = obj.replaceAll(/\$SOLID_DOCGEN_NEWLINE\$\s+/g, " ");
+			obj = obj.replaceAll(/\$SOLID_DOCGEN_NEWLINE\$\s*/g, " ");
 		else obj = obj.replaceAll("$SOLID_DOCGEN_NEWLINE$", "\n");
 
 		return obj;

@@ -16,6 +16,7 @@
     "@solidjs/router": "^0.15.3",
     "@solidjs/start": "^1.1.0",
     "monaco-editor": "^0.52.2",
+    "shiki": "^3.4.2",
     "solid-docgen": "workspace:*",
     "solid-js": "^1.9.5",
     "typescript": "^5.8.3",
