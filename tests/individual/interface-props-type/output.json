@@ -4,9 +4,11 @@
 		"props": {
 			"myProp": {
 				"type": {
-					"name": "string"
+					"name": "string",
+					"raw": "string"
 				},
-				"required": true
+				"required": true,
+				"stringified": "string"
 			}
 		}
 	}

@@ -1,0 +1,108 @@
+---
+title: Examples
+---
+
+import {PropsTable} from "~/component/PropsTable";
+
+# Examples
+
+
+```tsx
+interface Props {
+	/**
+	 * This is myProp.
+	 */
+	myProp?: "A";
+  secondProp: "B";
+	/**
+	 * Description of another.
+	 * 
+	 * @default "C"
+	 */
+  another: "C" | "D" | undefined;
+	/**
+	 * @default 4
+	 */
+  lastone?: 4 | 5;
+}
+
+export function MyComp(props: Props) {
+	return <></>;
+}
+```
+
+<PropsTable docgen={{
+		"displayName": "MyComp",
+		"props": {
+			"myProp": {
+				"type": {
+					"name": "literal",
+					"value": "A",
+					"raw": "\"A\""
+				},
+				"required": false,
+				"description": "This is myProp."
+			},
+			"secondProp": {
+				"type": {
+					"name": "literal",
+					"value": "B",
+					"raw": "\"B\""
+				},
+				"required": true
+			},
+			"another": {
+				"type": {
+					"name": "union",
+					"values": [
+						{
+							"name": "literal",
+							"value": "C",
+							"raw": "\"C\""
+						},
+						{
+							"name": "literal",
+							"value": "D",
+							"raw": "\"D\""
+						},
+						{
+							"name": "undefined",
+							"raw": "undefined"
+						}
+					],
+					"raw": "\"C\" | \"D\" | undefined"
+				},
+				"required": true,
+				"description": "Description of another.",
+				"defaultValue": {
+					"name": "literal",
+					"value": "C",
+					"raw": "\"C\""
+				}
+			},
+			"lastone": {
+				"type": {
+					"name": "union",
+					"values": [
+						{
+							"name": "literal",
+							"value": 4,
+							"raw": "4"
+						},
+						{
+							"name": "literal",
+							"value": 5,
+							"raw": "5"
+						}
+					],
+					"raw": "4 | 5 | undefined"
+				},
+				"required": false,
+				"defaultValue": {
+					"name": "literal",
+					"value": 4,
+					"raw": "4"
+				}
+			}
+		}
+	}}/>

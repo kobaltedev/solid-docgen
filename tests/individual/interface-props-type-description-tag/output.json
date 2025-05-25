@@ -4,10 +4,12 @@
 		"props": {
 			"myProp": {
 				"type": {
-					"name": "number"
+					"name": "number",
+					"raw": "number"
 				},
 				"required": true,
-				"description": "My prop description"
+				"description": "My prop description",
+				"stringified": "number"
 			}
 		}
 	}

@@ -38,6 +38,10 @@ export default defineConfig(
 										title: "Getting Started",
 										link: "/getting-started",
 									},
+									{
+										title: "Examples",
+										link: "/examples",
+									},
 								],
 							},
 						],

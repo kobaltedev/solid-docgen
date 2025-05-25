@@ -3,6 +3,7 @@
   "version": "0.0.0-dev",
   "description": "A library to extract information from Solid components for documentation generation.",
   "type": "module",
+  "sideEffects": false,
   "scripts": {
     "build": "tsc",
     "check": "biome check",
@@ -25,8 +26,14 @@
     "/dist"
   ],
   "exports": {
-    "import": "./src/solid-mdx.ts",
-    "types": "./src/solid-mdx.ts"
+    ".": {
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
+    "./stringify": {
+      "import": "./src/stringify.ts",
+      "types": "./src/stringify.ts"
+    }
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -41,5 +48,5 @@
   "dependencies": {
     "ts-morph": "^25.0.1"
   },
-  "packageManager": "pnpm@9.15.4"
+  "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
 }

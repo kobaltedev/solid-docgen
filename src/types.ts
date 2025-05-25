@@ -1,10 +1,8 @@
 import { Type } from "ts-morph";
 
 export interface Documentation {
-	composes?: string[];
 	description?: string;
 	displayName?: string;
-	methods?: MethodDescriptor[];
 	props?: Record<string, PropDescriptor>;
 }
 
@@ -33,12 +31,6 @@ export interface MethodDescriptor {
 
 export interface BaseType {}
 
-export interface UnionType extends BaseType {
-	name: "union";
-	values: TypeDescriptor[];
-	raw?: string;
-}
-
 export interface LiteralType extends BaseType {
 	name: "literal";
 	value: string | boolean | number;
@@ -54,7 +46,7 @@ export interface NullType extends BaseType {
 
 export interface UnknownType extends BaseType {
 	name: "unknown";
-	raw?: string;
+	raw: string;
 }
 
 export interface BooleanType extends BaseType {
@@ -74,26 +66,39 @@ export interface ObjectType extends BaseType {
 	properties: Record<string, TypeDescriptor & { required?: boolean }>;
 }
 
+export interface UnionType extends BaseType {
+	name: "union";
+	values: TypeDescriptor[];
+	raw: string;
+}
+
+export interface IntersectionType extends BaseType {
+	name: "intersection";
+	values: TypeDescriptor[];
+	raw: string;
+}
+
 export type TypeDescriptor =
 	| LiteralType
-	| UnionType
 	| UnknownType
 	| NullType
 	| UndefinedType
 	| BooleanType
 	| ObjectType
 	| StringType
-	| NumberType;
+	| NumberType
+	| UnionType
+	| IntersectionType;
 
 export interface PropDescriptor {
 	type: TypeDescriptor;
 	required?: boolean;
-	defaultValue?: this["type"] extends LiteralType
+	defaultValue?: TypeDescriptor /*this["type"] extends LiteralType
 		? this["type"]["value"]
 		: this["type"] extends BooleanType
 			? boolean
 			: this["type"] extends UnionType
 				? this["type"]["values"][]
-				: unknown;
+				: unknown*/;
 	description?: string;
 }

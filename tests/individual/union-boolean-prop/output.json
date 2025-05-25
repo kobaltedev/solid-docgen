@@ -4,9 +4,11 @@
 		"props": {
 			"myProp": {
 				"type": {
-					"name": "boolean"
+					"name": "boolean",
+					"raw": "boolean"
 				},
-				"required": true
+				"required": true,
+				"stringified": "boolean"
 			}
 		}
 	}

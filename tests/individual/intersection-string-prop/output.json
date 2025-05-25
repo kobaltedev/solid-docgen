@@ -1,0 +1,26 @@
+[
+	{
+		"displayName": "MyComp",
+		"props": {
+			"myProp": {
+				"type": {
+					"name": "intersection",
+					"values": [
+						{
+							"name": "string",
+							"raw": "string"
+						},
+						{
+							"name": "object",
+							"properties": {},
+							"raw": "{}"
+						}
+					],
+					"raw": "string & {}"
+				},
+				"required": true,
+				"stringified": "string & {}"
+			}
+		}
+	}
+]

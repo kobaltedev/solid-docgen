@@ -5,9 +5,11 @@
 			"myProp": {
 				"type": {
 					"name": "literal",
-					"value": true
+					"value": true,
+					"raw": "true"
 				},
-				"required": true
+				"required": true,
+				"stringified": "true"
 			}
 		}
 	}

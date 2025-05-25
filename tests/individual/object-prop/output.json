@@ -9,16 +9,20 @@
 						"a": {
 							"name": "literal",
 							"value": "A",
+							"raw": "\"A\"",
 							"required": true
 						},
 						"b": {
 							"name": "literal",
 							"value": "B",
+							"raw": "\"B\"",
 							"required": false
 						}
-					}
+					},
+					"raw": "{ a: \"A\"; b?: \"B\" | undefined; }"
 				},
-				"required": true
+				"required": true,
+				"stringified": "{ a: \"A\"; b?: \"B\"; }"
 			}
 		}
 	}

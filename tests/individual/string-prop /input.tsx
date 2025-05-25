@@ -1,5 +1,5 @@
 interface Props {
-	myProp: "A" | undefined | "C" | "B" | null | 4 | false | (string & {});
+	myProp: string;
 }
 
 export function MyComp(props: Props) {

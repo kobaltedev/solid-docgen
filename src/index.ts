@@ -5,9 +5,6 @@ import {
 	type ParameterDeclaration,
 	Project,
 	type SourceFile,
-	type TextRange,
-	VariableDeclaration,
-	VariableStatement,
 	ts,
 } from "ts-morph";
 import { parseProps } from "./props";
@@ -98,3 +95,5 @@ function toComponent(
 
 	return wrapped;
 }
+
+export type * from "./types";

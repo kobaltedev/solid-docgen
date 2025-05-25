@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path, { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, test } from "vitest";
-import { parse } from "../src";
+import { type Documentation, type PropDescriptor, parse } from "../src";
+import { stringifyType } from "../src/stringify";
 
 const INPUT_NAME = "input.tsx";
 const FIXTURE_ROOT = dirname(fileURLToPath(import.meta.url));
@@ -50,7 +51,17 @@ async function runFixtures(fixtures: Entries) {
 
 		const fileContent = fs.readFileSync(filePath, "utf8");
 
-		const result = parse(fileContent);
+		const result = parse(fileContent) as Array<
+			Documentation & {
+				props?: Record<string, PropDescriptor & { stringified?: string }>;
+			}
+		>;
+
+		for (const res of result) {
+			for (const key in res.props) {
+				res.props[key].stringified = stringifyType(res.props[key].type);
+			}
+		}
 
 		await expect(JSON.stringify(result, null, "\t")).toMatchFileSnapshot(
 			join(fixtures.parentPath, "output.json"),

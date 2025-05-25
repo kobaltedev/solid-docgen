@@ -8,34 +8,57 @@
 					"values": [
 						{
 							"name": "literal",
-							"value": false
+							"value": false,
+							"raw": "false"
 						},
 						{
 							"name": "literal",
-							"value": "A"
+							"value": "A",
+							"raw": "\"A\""
 						},
 						{
 							"name": "literal",
-							"value": "C"
+							"value": "C",
+							"raw": "\"C\""
 						},
 						{
 							"name": "literal",
-							"value": "B"
+							"value": "B",
+							"raw": "\"B\""
 						},
 						{
 							"name": "literal",
-							"value": 4
+							"value": 4,
+							"raw": "4"
 						},
 						{
-							"name": "null"
+							"name": "intersection",
+							"values": [
+								{
+									"name": "string",
+									"raw": "string"
+								},
+								{
+									"name": "object",
+									"properties": {},
+									"raw": "{}"
+								}
+							],
+							"raw": "string & {}"
 						},
 						{
-							"name": "undefined"
+							"name": "null",
+							"raw": "null"
+						},
+						{
+							"name": "undefined",
+							"raw": "undefined"
 						}
 					],
-					"raw": "false | \"A\" | \"C\" | \"B\" | 4 | null | undefined"
+					"raw": "false | \"A\" | \"C\" | \"B\" | 4 | (string & {}) | null | undefined"
 				},
-				"required": true
+				"required": true,
+				"stringified": "false | \"A\" | \"C\" | \"B\" | 4 | string & {} | null | undefined"
 			}
 		}
 	}

@@ -8,19 +8,23 @@
 					"values": [
 						{
 							"name": "literal",
-							"value": "A"
+							"value": "A",
+							"raw": "\"A\""
 						},
 						{
 							"name": "literal",
-							"value": "B"
+							"value": "B",
+							"raw": "\"B\""
 						},
 						{
-							"name": "null"
+							"name": "null",
+							"raw": "null"
 						}
 					],
 					"raw": "\"A\" | \"B\" | null"
 				},
-				"required": true
+				"required": true,
+				"stringified": "\"A\" | \"B\" | null"
 			}
 		}
 	}
