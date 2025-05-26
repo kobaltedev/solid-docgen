@@ -1,5 +1,5 @@
-html[data-theme="dark"] .shiki,
-html[data-theme="dark"] .shiki span {
+html[data-theme*="dark"] .shiki,
+html[data-theme*="dark"] .shiki span {
 	color: var(--1) !important;
 	background-color: var(--1-bg) !important;
 	/* Optional, if you also want font styles */
