@@ -4,8 +4,7 @@
 		"props": {
 			"myProp": {
 				"type": {
-					"name": "number",
-					"raw": "number"
+					"name": "number"
 				},
 				"required": true,
 				"description": "My prop description",

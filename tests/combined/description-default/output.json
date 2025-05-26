@@ -5,8 +5,7 @@
 			"myProp": {
 				"type": {
 					"name": "literal",
-					"value": "A",
-					"raw": "\"A\""
+					"value": "A"
 				},
 				"required": false,
 				"description": "This is myProp.",
@@ -15,8 +14,7 @@
 			"secondProp": {
 				"type": {
 					"name": "literal",
-					"value": "B",
-					"raw": "\"B\""
+					"value": "B"
 				},
 				"required": true,
 				"stringified": "\"B\""
@@ -27,17 +25,14 @@
 					"values": [
 						{
 							"name": "literal",
-							"value": "C",
-							"raw": "\"C\""
+							"value": "C"
 						},
 						{
 							"name": "literal",
-							"value": "D",
-							"raw": "\"D\""
+							"value": "D"
 						},
 						{
-							"name": "undefined",
-							"raw": "undefined"
+							"name": "undefined"
 						}
 					],
 					"raw": "\"C\" | \"D\" | undefined"
@@ -57,13 +52,11 @@
 					"values": [
 						{
 							"name": "literal",
-							"value": 4,
-							"raw": "4"
+							"value": 4
 						},
 						{
 							"name": "literal",
-							"value": 5,
-							"raw": "5"
+							"value": 5
 						}
 					],
 					"raw": "4 | 5 | undefined"

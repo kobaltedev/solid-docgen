@@ -44,9 +44,12 @@ export interface NullType extends BaseType {
 	name: "null";
 }
 
+export interface VoidType extends BaseType {
+	name: "void";
+}
+
 export interface UnknownType extends BaseType {
 	name: "unknown";
-	raw: string;
 }
 
 export interface BooleanType extends BaseType {
@@ -61,9 +64,23 @@ export interface StringType extends BaseType {
 	name: "string";
 }
 
+export interface ArrayType extends BaseType {
+	name: "array";
+	type: TypeDescriptor;
+}
+
 export interface ObjectType extends BaseType {
 	name: "object";
 	properties: Record<string, TypeDescriptor & { required?: boolean }>;
+}
+
+export interface FunctionType extends BaseType {
+	name: "function";
+	parameters: Record<
+		string,
+		TypeDescriptor & { required?: boolean; rest?: boolean }
+	>;
+	return: TypeDescriptor;
 }
 
 export interface UnionType extends BaseType {
@@ -78,17 +95,26 @@ export interface IntersectionType extends BaseType {
 	raw: string;
 }
 
+export interface UnparsedType {
+	name: "unparsed";
+	raw: string;
+}
+
 export type TypeDescriptor =
 	| LiteralType
 	| UnknownType
+	| VoidType
 	| NullType
 	| UndefinedType
 	| BooleanType
 	| ObjectType
 	| StringType
 	| NumberType
+	| FunctionType
+	| ArrayType
 	| UnionType
-	| IntersectionType;
+	| IntersectionType
+	| UnparsedType;
 
 export interface PropDescriptor {
 	type: TypeDescriptor;
@@ -101,4 +127,5 @@ export interface PropDescriptor {
 				? this["type"]["values"][]
 				: unknown*/;
 	description?: string;
+	internal?: boolean;
 }

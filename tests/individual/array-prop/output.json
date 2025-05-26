@@ -1,0 +1,77 @@
+[
+	{
+		"displayName": "MyComp",
+		"props": {
+			"myProp": {
+				"type": {
+					"name": "array",
+					"type": {
+						"name": "string"
+					}
+				},
+				"required": true,
+				"stringified": [
+					"Array<string>",
+					"string[]"
+				]
+			},
+			"otherProp": {
+				"type": {
+					"name": "array",
+					"type": {
+						"name": "string"
+					}
+				},
+				"required": true,
+				"stringified": [
+					"Array<string>",
+					"string[]"
+				]
+			},
+			"another": {
+				"type": {
+					"name": "array",
+					"type": {
+						"name": "union",
+						"values": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "number"
+							}
+						],
+						"raw": "string | number"
+					}
+				},
+				"required": true,
+				"stringified": [
+					"Array<string | number>",
+					"(string | number)[]"
+				]
+			},
+			"again": {
+				"type": {
+					"name": "array",
+					"type": {
+						"name": "union",
+						"values": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "number"
+							}
+						],
+						"raw": "string | number"
+					}
+				},
+				"required": true,
+				"stringified": [
+					"Array<string | number>",
+					"(string | number)[]"
+				]
+			}
+		}
+	}
+]

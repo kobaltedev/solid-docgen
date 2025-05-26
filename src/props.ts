@@ -5,7 +5,9 @@ import {
 	ts,
 } from "ts-morph";
 import type {
+	ArrayType,
 	BooleanType,
+	FunctionType,
 	IntersectionType,
 	LiteralType,
 	NullType,
@@ -16,6 +18,8 @@ import type {
 	TypeDescriptor,
 	UndefinedType,
 	UnionType,
+	UnknownType,
+	VoidType,
 } from "./types";
 
 export function parseProps(
@@ -73,6 +77,10 @@ export function parseProps(
 					ts.displayPartsToString(defaultValue.getText()),
 				);
 			}
+
+			if (jsDocTags.find((t) => t.getName() === "internal")) {
+				props[name].internal = true;
+			}
 		}
 	}
 
@@ -114,7 +122,6 @@ function parseType(type: Type<ts.Type>, required = true): TypeDescriptor {
 		return {
 			name: "literal",
 			value: type.getText() === "true",
-			raw: type.getText(),
 		} as LiteralType;
 	}
 
@@ -122,36 +129,83 @@ function parseType(type: Type<ts.Type>, required = true): TypeDescriptor {
 		return {
 			name: "literal",
 			value: type.getLiteralValue(),
-			raw: type.getText(),
 		} as LiteralType;
 	}
 
 	if (type.isUndefined()) {
 		return {
 			name: "undefined",
-			raw: type.getText(),
 		} as UndefinedType;
 	}
 
 	if (type.isNull()) {
 		return {
 			name: "null",
-			raw: type.getText(),
 		} as NullType;
+	}
+
+	if (type.isVoid()) {
+		return {
+			name: "void",
+		} as VoidType;
+	}
+
+	if (type.isUnknown()) {
+		return {
+			name: "unknown",
+		} as UnknownType;
 	}
 
 	if (type.isString()) {
 		return {
 			name: "string",
-			raw: type.getText(),
 		} as StringType;
 	}
 
 	if (type.isNumber()) {
 		return {
 			name: "number",
-			raw: type.getText(),
 		} as NumberType;
+	}
+
+	if (type.isArray()) {
+		return {
+			name: "array",
+			type: parseType(type.getArrayElementTypeOrThrow()),
+		} as ArrayType;
+	}
+
+	if (type.isAnonymous() && type.getCallSignatures().length >= 1) {
+		return {
+			name: "function",
+			parameters: Object.fromEntries(
+				type
+					.getCallSignatures()[0]
+					.getParameters()
+					.map((param) => {
+						const parsed = parseType(
+							param.getValueDeclarationOrThrow().getType(),
+						);
+						const compilerNode = param.getValueDeclarationOrThrow()
+							.compilerNode as ts.Node & {
+							questionToken?: unknown;
+							dotDotDotToken?: unknown;
+						};
+						const required = compilerNode.questionToken === undefined;
+						const rest = compilerNode.dotDotDotToken !== undefined;
+
+						return [
+							param.getName(),
+							{
+								...omitUndefinedFromUnion(parsed, required),
+								required: required ? true : undefined,
+								rest: rest ? true : undefined,
+							},
+						] as [string, FunctionType["parameters"][string]];
+					})
+			),
+			return: parseType(type.getCallSignatures()[0].getReturnType()),
+		} as FunctionType;
 	}
 
 	if (type.isObject() || type.isInterface() || type.isAnonymous()) {
@@ -165,12 +219,11 @@ function parseType(type: Type<ts.Type>, required = true): TypeDescriptor {
 						prop.getName(),
 						{
 							...omitUndefinedFromUnion(parsed, !prop.isOptional()),
-							required: !prop.isOptional(),
+							required: !prop.isOptional() ? true : undefined,
 						},
-					];
+					] as [string, ObjectType["properties"][string]];
 				}),
 			),
-			raw: type.getText(),
 		} as ObjectType;
 	}
 
@@ -183,7 +236,7 @@ function parseType(type: Type<ts.Type>, required = true): TypeDescriptor {
 	}
 
 	return {
-		name: "unknown",
+		name: "unparsed",
 		raw: type.getText(),
 	};
 }
@@ -219,7 +272,7 @@ function parseRawValue(value: unknown | string, parse = true): TypeDescriptor {
 	}
 
 	return {
-		name: "unknown",
+		name: "unparsed",
 		raw: !parse ? JSON.stringify(value) : (value as string),
 	};
 }

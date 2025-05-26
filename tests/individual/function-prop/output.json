@@ -1,0 +1,18 @@
+[
+	{
+		"displayName": "MyComp",
+		"props": {
+			"myProp": {
+				"type": {
+					"name": "function",
+					"parameters": {},
+					"return": {
+						"name": "void"
+					}
+				},
+				"required": true,
+				"stringified": "() => void"
+			}
+		}
+	}
+]

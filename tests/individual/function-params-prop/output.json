@@ -1,0 +1,26 @@
+[
+	{
+		"displayName": "MyComp",
+		"props": {
+			"myProp": {
+				"type": {
+					"name": "function",
+					"parameters": {
+						"input": {
+							"name": "string",
+							"required": true
+						},
+						"opt": {
+							"name": "number"
+						}
+					},
+					"return": {
+						"name": "void"
+					}
+				},
+				"required": true,
+				"stringified": "(input: string, opt?: number) => void"
+			}
+		}
+	}
+]

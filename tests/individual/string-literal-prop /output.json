@@ -5,8 +5,7 @@
 			"myProp": {
 				"type": {
 					"name": "literal",
-					"value": "A",
-					"raw": "\"A\""
+					"value": "A"
 				},
 				"required": true,
 				"stringified": "\"A\""

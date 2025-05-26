@@ -8,17 +8,14 @@
 					"values": [
 						{
 							"name": "literal",
-							"value": "A",
-							"raw": "\"A\""
+							"value": "A"
 						},
 						{
 							"name": "literal",
-							"value": "B",
-							"raw": "\"B\""
+							"value": "B"
 						},
 						{
-							"name": "null",
-							"raw": "null"
+							"name": "null"
 						}
 					],
 					"raw": "\"A\" | \"B\" | null"

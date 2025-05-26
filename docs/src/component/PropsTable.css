@@ -1,22 +1,23 @@
 html[data-theme="dark"] .shiki,
 html[data-theme="dark"] .shiki span {
-  color: var(--1) !important;
-  background-color: var(--1-bg) !important;
-  /* Optional, if you also want font styles */
-  font-style: var(--1-font-style) !important;
-  font-weight: var(--1-font-weight) !important;
-  text-decoration: var(--1-text-decoration) !important;
+	color: var(--1) !important;
+	background-color: var(--1-bg) !important;
+	/* Optional, if you also want font styles */
+	font-style: var(--1-font-style) !important;
+	font-weight: var(--1-font-weight) !important;
+	text-decoration: var(--1-text-decoration) !important;
 }
 
-.shiki, .shiki span {
-  --0-bg: var(--sb-code-background-color) !important;
-  --1-bg: var(--sb-code-background-color) !important;
+.shiki,
+.shiki span {
+	--0-bg: var(--sb-code-background-color) !important;
+	--1-bg: var(--sb-code-background-color) !important;
 }
 
-.props-table-type {  
-  display: inline-block;
+.props-table-type {
+	display: inline-block;
 	font-size: .9em;
 	padding: 0.1em 0.3em;
 	border-radius: var(--sb-border-radius);
-  background-color: var(--sb-code-background-color);
+	background-color: var(--sb-code-background-color);
 }

@@ -1,0 +1,1 @@
+../../../tests/combined/all/input.tsx

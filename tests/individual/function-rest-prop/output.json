@@ -1,0 +1,31 @@
+[
+	{
+		"displayName": "MyComp",
+		"props": {
+			"myProp": {
+				"type": {
+					"name": "function",
+					"parameters": {
+						"input": {
+							"name": "string",
+							"required": true
+						},
+						"others": {
+							"name": "array",
+							"type": {
+								"name": "number"
+							},
+							"required": true,
+							"rest": true
+						}
+					},
+					"return": {
+						"name": "void"
+					}
+				},
+				"required": true,
+				"stringified": "(input: string, others: Array<number>) => void"
+			}
+		}
+	}
+]

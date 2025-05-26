@@ -1,0 +1,335 @@
+[
+	{
+		"displayName": "MyComp",
+		"props": {
+			"a": {
+				"type": {
+					"name": "string"
+				},
+				"required": true,
+				"description": "This is a.",
+				"stringified": "string"
+			},
+			"b": {
+				"type": {
+					"name": "number"
+				},
+				"required": false,
+				"description": "Description of b.",
+				"defaultValue": {
+					"name": "literal",
+					"value": 4,
+					"raw": "4"
+				},
+				"stringified": "number"
+			},
+			"c": {
+				"type": {
+					"name": "undefined"
+				},
+				"required": true,
+				"stringified": "undefined"
+			},
+			"d": {
+				"type": {
+					"name": "null"
+				},
+				"required": true,
+				"stringified": "null"
+			},
+			"e": {
+				"type": {
+					"name": "void"
+				},
+				"required": true,
+				"stringified": "void"
+			},
+			"f": {
+				"type": {
+					"name": "unknown"
+				},
+				"required": true,
+				"stringified": "unknown"
+			},
+			"g": {
+				"type": {
+					"name": "boolean",
+					"raw": "boolean"
+				},
+				"required": true,
+				"stringified": "boolean"
+			},
+			"h": {
+				"type": {
+					"name": "literal",
+					"value": "A"
+				},
+				"required": true,
+				"stringified": "\"A\""
+			},
+			"i": {
+				"type": {
+					"name": "literal",
+					"value": 4
+				},
+				"required": true,
+				"stringified": "4"
+			},
+			"j": {
+				"type": {
+					"name": "union",
+					"values": [
+						{
+							"name": "literal",
+							"value": "A"
+						},
+						{
+							"name": "literal",
+							"value": 4
+						}
+					],
+					"raw": "\"A\" | 4"
+				},
+				"required": true,
+				"stringified": "\"A\" | 4"
+			},
+			"k": {
+				"type": {
+					"name": "union",
+					"values": [
+						{
+							"name": "literal",
+							"value": "A"
+						},
+						{
+							"name": "literal",
+							"value": 4
+						}
+					],
+					"raw": "\"A\" | 4 | undefined"
+				},
+				"required": false,
+				"stringified": "\"A\" | 4"
+			},
+			"l": {
+				"type": {
+					"name": "union",
+					"values": [
+						{
+							"name": "literal",
+							"value": "A"
+						},
+						{
+							"name": "literal",
+							"value": 4
+						},
+						{
+							"name": "undefined"
+						}
+					],
+					"raw": "\"A\" | 4 | undefined"
+				},
+				"required": true,
+				"stringified": "\"A\" | 4 | undefined"
+			},
+			"m": {
+				"type": {
+					"name": "intersection",
+					"values": [
+						{
+							"name": "string"
+						},
+						{
+							"name": "object",
+							"properties": {}
+						}
+					],
+					"raw": "string & {}"
+				},
+				"required": true,
+				"stringified": "string & {}"
+			},
+			"n": {
+				"type": {
+					"name": "array",
+					"type": {
+						"name": "string"
+					}
+				},
+				"required": true,
+				"stringified": [
+					"Array<string>",
+					"string[]"
+				]
+			},
+			"o": {
+				"type": {
+					"name": "array",
+					"type": {
+						"name": "string"
+					}
+				},
+				"required": true,
+				"stringified": [
+					"Array<string>",
+					"string[]"
+				]
+			},
+			"p": {
+				"type": {
+					"name": "array",
+					"type": {
+						"name": "union",
+						"values": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "number"
+							}
+						],
+						"raw": "string | number"
+					}
+				},
+				"required": true,
+				"stringified": [
+					"Array<string | number>",
+					"(string | number)[]"
+				]
+			},
+			"q": {
+				"type": {
+					"name": "array",
+					"type": {
+						"name": "union",
+						"values": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "number"
+							}
+						],
+						"raw": "string | number"
+					}
+				},
+				"required": true,
+				"stringified": [
+					"Array<string | number>",
+					"(string | number)[]"
+				]
+			},
+			"r": {
+				"type": {
+					"name": "function",
+					"parameters": {},
+					"return": {
+						"name": "void"
+					}
+				},
+				"required": true,
+				"stringified": "() => void"
+			},
+			"s": {
+				"type": {
+					"name": "function",
+					"parameters": {
+						"a": {
+							"name": "string",
+							"required": true
+						}
+					},
+					"return": {
+						"name": "string"
+					}
+				},
+				"required": true,
+				"stringified": "(a: string) => string"
+			},
+			"t": {
+				"type": {
+					"name": "function",
+					"parameters": {
+						"a": {
+							"name": "number",
+							"required": true
+						},
+						"b": {
+							"name": "array",
+							"type": {
+								"name": "string"
+							},
+							"required": true,
+							"rest": true
+						}
+					},
+					"return": {
+						"name": "object",
+						"properties": {
+							"a": {
+								"name": "literal",
+								"value": "A",
+								"required": true
+							},
+							"b": {
+								"name": "union",
+								"values": [
+									{
+										"name": "string"
+									},
+									{
+										"name": "number"
+									}
+								],
+								"raw": "string | number",
+								"required": true
+							}
+						}
+					}
+				},
+				"required": true,
+				"stringified": "(a: number, b: Array<string>) => { a: \"A\"; b: string | number; }"
+			},
+			"u": {
+				"type": {
+					"name": "object",
+					"properties": {
+						"a": {
+							"name": "literal",
+							"value": "A",
+							"required": true
+						},
+						"b": {
+							"name": "literal",
+							"value": 4
+						},
+						"c": {
+							"name": "union",
+							"values": [
+								{
+									"name": "string"
+								},
+								{
+									"name": "undefined"
+								}
+							],
+							"raw": "string | undefined",
+							"required": true
+						}
+					}
+				},
+				"required": true,
+				"stringified": "{\n  a: \"A\";\n  b?: 4;\n  c: string | undefined;\n}"
+			},
+			"internal": {
+				"type": {
+					"name": "literal",
+					"value": "hidden"
+				},
+				"required": true,
+				"internal": true,
+				"stringified": "\"hidden\""
+			}
+		}
+	}
+]

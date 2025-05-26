@@ -16,8 +16,11 @@ type Component = {
 	getDescription: () => string | undefined;
 };
 
+let projectCache: Project;
+
 function getProject() {
-	const project = new Project({
+	if (!projectCache) projectCache = new Project({
+		useInMemoryFileSystem: typeof window !== "undefined",
 		compilerOptions: {
 			target: ts.ScriptTarget.ESNext,
 			module: ts.ModuleKind.ESNext,
@@ -27,17 +30,16 @@ function getProject() {
 			jsxImportSource: "solid-js",
 			strict: true,
 			skipLibCheck: true,
-			lib: ["dom", "esnext"],
 			types: ["solid-js"],
 		},
 	});
 
-	return project;
+	return projectCache;
 }
 
 export function parse(code: string): Documentation[] {
 	const project = getProject();
-	const sourceFile = project.createSourceFile("input.tsx", code);
+	const sourceFile = project.createSourceFile("input.tsx", code, {overwrite: true});
 
 	return getExportedComponents(sourceFile).map((c) => {
 		return {

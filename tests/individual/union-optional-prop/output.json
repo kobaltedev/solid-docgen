@@ -8,13 +8,11 @@
 					"values": [
 						{
 							"name": "literal",
-							"value": "A",
-							"raw": "\"A\""
+							"value": "A"
 						},
 						{
 							"name": "literal",
-							"value": "B",
-							"raw": "\"B\""
+							"value": "B"
 						}
 					],
 					"raw": "\"A\" | \"B\" | undefined"

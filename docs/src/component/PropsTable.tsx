@@ -28,7 +28,7 @@ export function PropsTable(props: PropsTableProps) {
 				</thead>
 				<tbody>
 					<For each={Object.entries(props.docgen.props ?? {})}>
-						{([propName, propValue]) => (
+						{([propName, propValue]) => (propValue.internal ? undefined : (
 							<tr>
 								<td>
 									<Dynamic component={mdxComponents.code}>
@@ -38,24 +38,30 @@ export function PropsTable(props: PropsTableProps) {
 								</td>
 								<td>
 									<NoHydration>
-										<span class="props-table-type" innerHTML={highlighter.codeToHtml(
-											stringifyType(propValue.type) + (propValue.defaultValue ? ` = ${stringifyType(propValue.defaultValue!, "  ", ",")}` : "" ),
-											{
-												lang: "typescript",
-												themes: {
-													0: "github-light",
-													1: "github-dark",
+										<span
+											class="props-table-type"
+											innerHTML={highlighter.codeToHtml(
+												stringifyType(propValue.type) +
+													(propValue.defaultValue
+														? ` = ${stringifyType(propValue.defaultValue!, {objSep: ","})}`
+														: ""),
+												{
+													lang: "typescript",
+													themes: {
+														0: "github-light",
+														1: "github-dark",
+													},
+													defaultColor: "0",
+													cssVariablePrefix: "--",
 												},
-												defaultColor: "0",
-												cssVariablePrefix: "--",
-											}
-										)}/>
+											)}
+										/>
 										<br />
 									</NoHydration>
 									{propValue.description}
 								</td>
 							</tr>
-						)}
+						))}
 					</For>
 				</tbody>
 			</Dynamic>

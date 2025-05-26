@@ -7,13 +7,11 @@
 					"name": "intersection",
 					"values": [
 						{
-							"name": "string",
-							"raw": "string"
+							"name": "string"
 						},
 						{
 							"name": "object",
-							"properties": {},
-							"raw": "{}"
+							"properties": {}
 						}
 					],
 					"raw": "string & {}"

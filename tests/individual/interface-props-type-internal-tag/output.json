@@ -4,10 +4,12 @@
 		"props": {
 			"myProp": {
 				"type": {
-					"name": "string"
+					"name": "number"
 				},
 				"required": true,
-				"stringified": "string"
+				"description": "My prop",
+				"internal": true,
+				"stringified": "number"
 			}
 		}
 	}

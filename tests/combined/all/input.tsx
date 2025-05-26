@@ -1,14 +1,3 @@
----
-title: Examples
----
-
-import { PropsTable } from "~/component/PropsTable";
-import exampleAllJson from "~/example-files/all.json";
-
-# Examples
-
-
-```tsx
 interface Props {
 	/**
 	 * This is a.
@@ -49,6 +38,3 @@ interface Props {
 export function MyComp(props: Props) {
 	return <></>;
 }
-```
-
-<PropsTable docgen={exampleAllJson[0]}/>

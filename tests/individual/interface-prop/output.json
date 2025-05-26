@@ -9,17 +9,13 @@
 						"a": {
 							"name": "literal",
 							"value": "A",
-							"raw": "\"A\"",
 							"required": true
 						},
 						"b": {
 							"name": "literal",
-							"value": "B",
-							"raw": "\"B\"",
-							"required": false
+							"value": "B"
 						}
-					},
-					"raw": "MyInterface"
+					}
 				},
 				"required": true,
 				"stringified": "{ a: \"A\"; b?: \"B\"; }"

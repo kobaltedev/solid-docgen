@@ -4,10 +4,10 @@
 		"props": {
 			"myProp": {
 				"type": {
-					"name": "string"
+					"name": "unknown"
 				},
 				"required": true,
-				"stringified": "string"
+				"stringified": "unknown"
 			}
 		}
 	}
