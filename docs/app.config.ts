@@ -8,6 +8,13 @@ export default defineConfig(
 			vite: {
 				plugins: [workerPlugin()],
 			},
+			server: {
+				esbuild: {
+					options: {
+						target: "esnext",
+					},
+				},
+			},
 		},
 		{
 			title: "Solid-Docgen",
