@@ -11,7 +11,7 @@
     "@bigmistqke/vite-plugin-worker-proxy": "^0.0.12",
     "@bigmistqke/worker-proxy": "^0.0.12",
     "@iconify-json/ri": "^1.2.5",
-    "@kobalte/solidbase": "^0.2.11",
+    "@kobalte/solidbase": "^0.2.13",
     "@monaco-editor/loader": "^1.5.0",
     "@solidjs/router": "^0.15.3",
     "@solidjs/start": "^1.1.0",

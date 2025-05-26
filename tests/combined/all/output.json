@@ -288,7 +288,7 @@
 					}
 				},
 				"required": true,
-				"stringified": "(a: number, b: Array<string>) => { a: \"A\"; b: string | number; }"
+				"stringified": "(a: number, b: Array<string>) => {a: \"A\", b: string | number}"
 			},
 			"u": {
 				"type": {
@@ -319,7 +319,7 @@
 					}
 				},
 				"required": true,
-				"stringified": "{\n  a: \"A\";\n  b?: 4;\n  c: string | undefined;\n}"
+				"stringified": "{a: \"A\"; b?: 4; c: string | undefined}"
 			},
 			"internal": {
 				"type": {
