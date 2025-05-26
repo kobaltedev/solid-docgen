@@ -30,7 +30,7 @@ export function stringifyType(
 		type.name === "boolean" ||
 		type.name === "number" ||
 		type.name === "string" ||
-		type.name === "void"||
+		type.name === "void" ||
 		type.name === "unknown"
 	)
 		return type.name;
@@ -55,12 +55,9 @@ export function stringifyType(
 
 		obj += "}";
 
-		const shortNotation = `{${obj.replaceAll(/\$SOLID_DOCGEN_NEWLINE\$\s*/g, " ").slice(2, -options.objSep.length - 2)}}`
+		const shortNotation = `{${obj.replaceAll(/\$SOLID_DOCGEN_NEWLINE\$\s*/g, " ").slice(2, -options.objSep.length - 2)}}`;
 
-		if (
-			shortNotation.length <
-			options.maxObjLen
-		) {
+		if (shortNotation.length < options.maxObjLen) {
 			obj = shortNotation;
 		} else obj = obj.replaceAll("$SOLID_DOCGEN_NEWLINE$", "\n");
 
@@ -86,7 +83,14 @@ export function stringifyType(
 	}
 
 	if (type.name === "function") {
-		return `(${Object.entries(type.parameters).map(([key, p]) => `${key}${p.required ? "" : "?"}: ${stringifyType(p, options)}`).join(", ")}) => ${stringifyType(type.return, {...options, objSep: ","})}`
+		return `(${Object.entries(type.parameters)
+			.map(
+				([key, p]) =>
+					`${key}${p.required ? "" : "?"}: ${stringifyType(p, options)}`,
+			)
+			.join(
+				", ",
+			)}) => ${stringifyType(type.return, { ...options, objSep: "," })}`;
 	}
 
 	if (type.name === "unparsed") {

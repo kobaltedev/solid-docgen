@@ -26,8 +26,8 @@ interface Props {
 	q: Array<number | string>;
 	r: () => void;
 	s: (a: string) => string;
-	t: (a: number, ...b: string[]) => {a: "A", b: number | string};
-	u: {a: "A", b?: 4, c: "A" | string | undefined};
+	t: (a: number, ...b: string[]) => { a: "A"; b: number | string };
+	u: { a: "A"; b?: 4; c: "A" | string | undefined };
 
 	/**
 	 * @internal

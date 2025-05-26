@@ -53,14 +53,20 @@ async function runFixtures(fixtures: Entries) {
 
 		const result = parse(fileContent) as Array<
 			Documentation & {
-				props?: Record<string, PropDescriptor & { stringified?: string | string[] }>;
+				props?: Record<
+					string,
+					PropDescriptor & { stringified?: string | string[] }
+				>;
 			}
 		>;
 
 		for (const res of result) {
 			for (const key in res.props) {
 				if (res.props[key].type.name === "array") {
-					res.props[key].stringified = [stringifyType(res.props[key].type), stringifyType(res.props[key].type, {arrayType: "[]"})];
+					res.props[key].stringified = [
+						stringifyType(res.props[key].type),
+						stringifyType(res.props[key].type, { arrayType: "[]" }),
+					];
 					continue;
 				}
 

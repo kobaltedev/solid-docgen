@@ -19,27 +19,30 @@ type Component = {
 let projectCache: Project;
 
 function getProject() {
-	if (!projectCache) projectCache = new Project({
-		useInMemoryFileSystem: typeof window !== "undefined",
-		compilerOptions: {
-			target: ts.ScriptTarget.ESNext,
-			module: ts.ModuleKind.ESNext,
-			allowSyntheticDefaultImports: true,
-			esModuleInterop: true,
-			isolatedModules: true,
-			jsxImportSource: "solid-js",
-			strict: true,
-			skipLibCheck: true,
-			types: ["solid-js"],
-		},
-	});
+	if (!projectCache)
+		projectCache = new Project({
+			useInMemoryFileSystem: typeof window !== "undefined",
+			compilerOptions: {
+				target: ts.ScriptTarget.ESNext,
+				module: ts.ModuleKind.ESNext,
+				allowSyntheticDefaultImports: true,
+				esModuleInterop: true,
+				isolatedModules: true,
+				jsxImportSource: "solid-js",
+				strict: true,
+				skipLibCheck: true,
+				types: ["solid-js"],
+			},
+		});
 
 	return projectCache;
 }
 
 export function parse(code: string): Documentation[] {
 	const project = getProject();
-	const sourceFile = project.createSourceFile("input.tsx", code, {overwrite: true});
+	const sourceFile = project.createSourceFile("input.tsx", code, {
+		overwrite: true,
+	});
 
 	return getExportedComponents(sourceFile).map((c) => {
 		return {

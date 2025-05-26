@@ -28,40 +28,42 @@ export function PropsTable(props: PropsTableProps) {
 				</thead>
 				<tbody>
 					<For each={Object.entries(props.docgen.props ?? {})}>
-						{([propName, propValue]) => (propValue.internal ? undefined : (
-							<tr>
-								<td>
-									<Dynamic component={mdxComponents.code}>
-										{propName}
-										{propValue.required ? "" : "?"}
-									</Dynamic>
-								</td>
-								<td>
-									<NoHydration>
-										<span
-											class="props-table-type"
-											innerHTML={highlighter.codeToHtml(
-												stringifyType(propValue.type) +
-													(propValue.defaultValue
-														? ` = ${stringifyType(propValue.defaultValue!, {objSep: ","})}`
-														: ""),
-												{
-													lang: "typescript",
-													themes: {
-														0: "github-light",
-														1: "github-dark",
+						{([propName, propValue]) =>
+							propValue.internal ? undefined : (
+								<tr>
+									<td>
+										<Dynamic component={mdxComponents.code}>
+											{propName}
+											{propValue.required ? "" : "?"}
+										</Dynamic>
+									</td>
+									<td>
+										<NoHydration>
+											<span
+												class="props-table-type"
+												innerHTML={highlighter.codeToHtml(
+													stringifyType(propValue.type) +
+														(propValue.defaultValue
+															? ` = ${stringifyType(propValue.defaultValue!, { objSep: "," })}`
+															: ""),
+													{
+														lang: "typescript",
+														themes: {
+															0: "github-light",
+															1: "github-dark",
+														},
+														defaultColor: "0",
+														cssVariablePrefix: "--",
 													},
-													defaultColor: "0",
-													cssVariablePrefix: "--",
-												},
-											)}
-										/>
-										<br />
-									</NoHydration>
-									{propValue.description}
-								</td>
-							</tr>
-						))}
+												)}
+											/>
+											<br />
+										</NoHydration>
+										{propValue.description}
+									</td>
+								</tr>
+							)
+						}
 					</For>
 				</tbody>
 			</Dynamic>

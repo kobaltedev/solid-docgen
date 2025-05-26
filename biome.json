@@ -1,7 +1,12 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
 	"files": {
-		"ignore": ["./tsconfig.json", "**/package.json", "**/tests/**/output.json"]
+		"ignore": [
+			"./tsconfig.json",
+			"**/package.json",
+			"**/tests/**/output.json",
+			"**/tests/combined/all/input.tsx"
+		]
 	},
 	"vcs": {
 		"enabled": true,

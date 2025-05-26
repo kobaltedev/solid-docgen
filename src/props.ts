@@ -202,7 +202,7 @@ function parseType(type: Type<ts.Type>, required = true): TypeDescriptor {
 								rest: rest ? true : undefined,
 							},
 						] as [string, FunctionType["parameters"][string]];
-					})
+					}),
 			),
 			return: parseType(type.getCallSignatures()[0].getReturnType()),
 		} as FunctionType;
