@@ -11,7 +11,8 @@
 		"release": "pnpm tsx scripts/release.ts",
 		"test": "vitest run",
 		"test:ui": "vitest --ui",
-		"dev:docs": "pnpm -F solid-docgen-docs dev"
+		"dev:docs": "pnpm -F solid-docgen-docs dev",
+		"build": "#"
 	},
 	"keywords": [
 		"solid",
