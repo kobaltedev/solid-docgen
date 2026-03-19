@@ -1,51 +1,54 @@
 {
-  "name": "solid-docgen",
-  "version": "0.0.0-dev",
-  "description": "A library to extract information from Solid components for documentation generation.",
-  "type": "module",
-  "sideEffects": false,
-  "scripts": {
-    "check": "biome check",
-    "format": "biome check --write",
-    "typecheck": "tsc --noEmit",
-    "release": "pnpm tsx scripts/release.ts",
-    "test": "vitest run",
-    "test:ui": "vitest --ui",
-    "dev:docs": "pnpm -F solid-docgen-docs dev"
-  },
-  "keywords": [
-    "solid",
-    "solidjs",
-    "documentation",
-    "documentation-generation"
-  ],
-  "author": "jer3m01 <jer3m01@jer3m01.com>",
-  "license": "MIT",
-  "files": [
-    "/src"
-  ],
-  "exports": {
-    ".": {
-      "import": "./src/index.ts",
-      "types": "./src/index.ts"
-    },
-    "./stringify": {
-      "import": "./src/stringify.ts",
-      "types": "./src/stringify.ts"
-    }
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@octokit/core": "^6.1.5",
-    "@types/node": "^22.14.1",
-    "@vitest/ui": "^3.1.1",
-    "solid-js": "^1.9.5",
-    "tsx": "^4.19.3",
-    "typescript": "^5.8.3",
-    "vitest": "^3.1.1"
-  },
-  "dependencies": {
-    "ts-morph": "^25.0.1"
-  },
-  "packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677"
+	"name": "solid-docgen",
+	"version": "0.0.0-dev",
+	"description": "A library to extract information from Solid components for documentation generation.",
+	"type": "module",
+	"sideEffects": false,
+	"scripts": {
+		"check": "biome check",
+		"format": "biome check --write",
+		"typecheck": "tsc --noEmit",
+		"release": "pnpm tsx scripts/release.ts",
+		"test": "vitest run",
+		"test:ui": "vitest --ui",
+		"dev:docs": "pnpm -F solid-docgen-docs dev"
+	},
+	"keywords": [
+		"solid",
+		"solidjs",
+		"documentation",
+		"documentation-generation"
+	],
+	"author": "jer3m01 <jer3m01@jer3m01.com>",
+	"license": "MIT",
+	"repository": {
+		"url": "https://github.com/kobaltedev/solid-docgen"
+	},
+	"files": [
+		"/src"
+	],
+	"exports": {
+		".": {
+			"import": "./src/index.ts",
+			"types": "./src/index.ts"
+		},
+		"./stringify": {
+			"import": "./src/stringify.ts",
+			"types": "./src/stringify.ts"
+		}
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@octokit/core": "^6.1.6",
+		"@types/node": "^22.19.15",
+		"@vitest/ui": "^3.2.4",
+		"solid-js": "^1.9.11",
+		"tsx": "^4.21.0",
+		"typescript": "^5.9.3",
+		"vitest": "^3.2.4"
+	},
+	"dependencies": {
+		"ts-morph": "^25.0.1"
+	},
+	"packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677"
 }

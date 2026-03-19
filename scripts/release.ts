@@ -1,16 +1,11 @@
 import { execSync } from "node:child_process";
 import { Octokit } from "@octokit/core";
 
-// @ts-ignore
-process.exit(0); // Not ready for release
-
 if (!execSync("git --version").includes("git version")) {
 	console.error("Git not installed");
-	// @ts-ignore
 	process.exit(1);
 }
 
-// @ts-ignore
 const DRY_RUN = !process.env.GITHUB_ACTIONS;
 
 if (DRY_RUN) console.log("DRY RUN\n");
@@ -108,7 +103,6 @@ console.log(`Creating tag v${nextVersion} for hash ${currentHash}`);
 
 if (!DRY_RUN) {
 	const octokit = new Octokit({
-		// @ts-ignore
 		auth: process.env.GITHUB_TOKEN,
 	});
 
