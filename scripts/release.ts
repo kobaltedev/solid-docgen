@@ -82,8 +82,8 @@ if (shouldRelease) {
 		DRY_RUN ? "[DRY RUN]" : "",
 	);
 } else {
-	const latestPreviewVersion = previewTags[0].split("-next.")[0];
-	const laterPreviewNumber = Number(previewTags[0].split("-next.")[1]);
+	const latestPreviewVersion = previewTags[0]?.split("-next.")?.[0] ?? "0";
+	const laterPreviewNumber = Number(previewTags[0]?.split("-next.")?.[1] ?? -1);
 
 	if (latestPreviewVersion === releasesTags[0]) {
 		nextVersion = `${latestPreviewVersion}-next.${laterPreviewNumber + 1}`;
@@ -108,7 +108,7 @@ if (!DRY_RUN) {
 
 	await octokit.request("POST /repos/{owner}/{repo}/git/refs", {
 		owner: "kobaltedev",
-		repo: "solidbase",
+		repo: "solid-docgen",
 		ref: `refs/tags/v${nextVersion}`,
 		sha: currentHash,
 		headers: {
